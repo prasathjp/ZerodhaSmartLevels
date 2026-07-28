@@ -437,31 +437,15 @@ function scanRows() {
 
     function publishData() {
 
-        window.ZSL_STOCKS = APP.stocks;
+    window.dispatchEvent(
+        new CustomEvent("zsl-data-updated", {
+            detail: {
+                stocks: APP.stocks
+            }
+        })
+    );
 
-        window.dispatchEvent(
-
-            new CustomEvent(
-
-                "zsl-data-updated",
-
-                {
-
-                    detail: {
-
-                        stocks: APP.stocks,
-
-                        timestamp: Date.now()
-
-                    }
-
-                }
-
-            )
-
-        );
-
-    }
+}
 
     //-------------------------------------------------------
     // Refresh Cycle

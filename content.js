@@ -157,7 +157,7 @@
 
             const priceElement =
                 row.querySelector(
-                    'td[data-label="Last Price"] span'
+                    'td[data-label="Day High"] span'
                 );
 
             const changeElement =

@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "Zerodha Smart Levels",
+  "short_name": "Smart Levels",
+  "description": "Highlights stocks approaching configurable price levels on Zerodha Kite Screener.",
+  "version": "4.0.0",
+
+  "permissions": [
+    "storage",
+    "notifications",
+    "activeTab",
+    "scripting"
+  ],
+
+  "host_permissions": [
+    "https://kite.zerodha.com/*"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Zerodha Smart Levels"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://kite.zerodha.com/*"
+      ],
+      "js": [
+        "utils.js",
+        "dashboard.js",
+        "content.js"
+      ],
+      "css": [
+        "css/styles.css",
+        "css/dashboard.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

@@ -192,32 +192,34 @@ window.ZSL = (() => {
 
     return {
 
-        VERSION,
+    VERSION,
 
-        parsePrice,
+    parsePrice,
 
-        parseNumber,
+    parseNumber,
 
-        previousTarget,
+    shouldHighlight,
 
-        distancePercentage,
+    previousTarget,
 
-        debounce,
+    distancePercentage,
 
-        throttle,
+    debounce,
 
-        create,
+    throttle,
 
-        formatPrice,
+    create,
 
-        exportCSV,
+    formatPrice,
 
-        sortByDistance,
+    exportCSV,
 
-        uuid,
+    sortByDistance,
 
-        sleep
+    uuid,
 
-    };
+    sleep
+
+};
 
 })();

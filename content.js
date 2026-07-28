@@ -197,58 +197,55 @@
     // Scan Cached Rows
     //-------------------------------------------------------
 
-    function scanRows() {
+function scanRows() {
 
-        APP.stocks = [];
+    APP.stocks = [];
 
-        APP.rowCache.forEach(cache => {
+    APP.rowCache.forEach(cache => {
 
-            const price =
-                Number(
-                    cache.priceElement
-                        .textContent
-                        .replace(/,/g, "")
-                );
+        const symbol = cache.symbolElement.textContent.trim();
 
-            if (!price)
-                return;
+        const price = Number(
+            cache.priceElement.textContent.replace(/,/g, "")
+        );
 
-            const result = ZSL.shouldHighlight(price);
+        if (!price)
+            return;
 
-APP.stocks.push({
+        const result = ZSL.shouldHighlight(price);
 
-    symbol,
-    price,
+        APP.stocks.push({
 
-    target: result.target,
+            symbol: symbol,
 
-    distance: result.distance,
+            price: price,
 
-    highlight: result.highlight,
+            target: result.target,
 
-                distancePct:
-                    ZSL.distancePercentage(
-                        price,
-                        target
-                    ),
+            distance: result.distance,
 
-                change:
-                    cache.changeElement
-                        ? cache.changeElement.textContent.trim()
-                        : "",
+            highlight: result.highlight,
 
-                row:
-                    cache.row
+            distancePct: ZSL.distancePercentage(
+                price,
+                result.target
+            ),
 
-            });
+            change: cache.changeElement
+                ? cache.changeElement.textContent.trim()
+                : "",
+
+            row: cache.row
 
         });
 
-        APP.stocks =
-            ZSL.sortByDistance(APP.stocks);
+    });
 
-    }
-      //-------------------------------------------------------
+    APP.stocks = ZSL.sortByDistance(APP.stocks);
+
+}
+    
+    //-------------------------------------------------------
     // Header Management
     //-------------------------------------------------------
 

@@ -16,6 +16,9 @@ createDashboard();
 
 window.addEventListener("zsl-data-updated", e => {
 
+    if (!e.detail || !e.detail.stocks)
+        return;
+
     renderStocks(e.detail.stocks);
 
 });

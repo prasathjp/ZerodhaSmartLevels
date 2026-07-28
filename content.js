@@ -213,26 +213,18 @@
             if (!price)
                 return;
 
-            const target =
-                ZSL.nextTarget(
-                    price,
-                    APP.settings.targetInterval
-                );
+            const result = ZSL.shouldHighlight(price);
 
-            APP.stocks.push({
+APP.stocks.push({
 
-                symbol:
-                    cache.symbolElement.textContent.trim(),
+    symbol,
+    price,
 
-                price,
+    target: result.target,
 
-                target,
+    distance: result.distance,
 
-                distance:
-                    ZSL.distance(
-                        price,
-                        target
-                    ),
+    highlight: result.highlight,
 
                 distancePct:
                     ZSL.distancePercentage(
@@ -349,46 +341,16 @@
 
     }
 
-    function applyHighlight(stock) {
+   function applyHighlight(stock) {
 
-        const row = stock.row;
+    clearHighlight(stock.row);
 
-        clearHighlight(row);
+    if (!stock.highlight)
+        return;
 
-        const css =
-            ZSL.getHighlightClass(
-                stock.distance
-            );
+    stock.row.classList.add("zsl-green");
 
-        if (!css)
-            return;
-
-        row.classList.add(css);
-
-        const flashKey =
-            stock.symbol +
-            "_" +
-            stock.target;
-
-        if (
-            row.dataset.flashKey !== flashKey
-        ) {
-
-            row.dataset.flashKey = flashKey;
-
-            row.classList.add("zsl-flash");
-
-            setTimeout(() => {
-
-                row.classList.remove(
-                    "zsl-flash"
-                );
-
-            }, 1500);
-
-        }
-
-    }
+}
 
     //-------------------------------------------------------
     // Render Table

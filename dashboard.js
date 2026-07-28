@@ -42,7 +42,6 @@ function createDashboard(){
                 <tr>
 
                     <th>Stock</th>
-                    <th>LTP</th>
                     <th>Day High</th>
 
                 </tr>
@@ -92,7 +91,6 @@ function renderStocks(stocks){
 
             <td>${stock.symbol}</td>
             <td>${stock.price.toFixed(2)}</td>
-            <td>${stock.dayHigh.toFixed(2)}</td>
 
         `;
 

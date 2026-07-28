@@ -198,15 +198,9 @@ window.ZSL = (() => {
 
         parseNumber,
 
-        nextTarget,
-
         previousTarget,
 
-        distance,
-
         distancePercentage,
-
-        getHighlightClass,
 
         debounce,
 

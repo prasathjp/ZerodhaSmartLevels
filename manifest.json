@@ -32,7 +32,6 @@
       ],
       "js": [
         "utils.js",
-        "dashboard.js",
         "content.js"
       ],
       "css": [
